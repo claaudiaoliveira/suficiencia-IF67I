@@ -17,5 +17,6 @@ api.put('/user', preRequest(require('./route/user/putMethod')));
 api.post('/publication', preRequest(require('./route/publication/postMethod')));
 api.get('/publication', preRequest(require('./route/publication/getMethod')));
 api.post('/publication/comment', preRequest(require('./route/publication/comment/postMethod')));
+api.post('/publication/like', preRequest(require('./route/publication/like/postMethod')));
 
 module.exports = api;
