@@ -28,6 +28,10 @@ module.exports = {
       route: '/publication/comment',
       method: 'post',
     },
+    {
+      route: '/publication/like',
+      method: 'post',
+    },
   ],
   regular: [
     {
@@ -44,6 +48,10 @@ module.exports = {
     },
     {
       route: '/publication/comment',
+      method: 'post',
+    },
+    {
+      route: '/publication/like',
       method: 'post',
     },
   ],
