@@ -11,7 +11,7 @@ ajv.addFormat('acceptTypeValue', {
   validate: (value) => acceptType.includes(value),
 });
 
-ajv.addFormat('validatePassword', { validate: (value) => /^\w+/.test(value) });
+ajv.addFormat('validatePassword', { validate: (value) => /[0-9]/.test(value) && /[a-zA-Z]/.test(value) });
 
 ajv.addFormat('validateEmail', { validate: (value) => /^[a-z0-9.]+@[a-z0-9]+\.\D+/.test(value) });
 
