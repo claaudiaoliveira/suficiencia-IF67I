@@ -5,6 +5,7 @@ module.exports = async () => {
   const User = require('./table/users');
   require('./table/publications');
   require('./table/comments');
+  require('./table/likes');
 
   await database.sync();
 
