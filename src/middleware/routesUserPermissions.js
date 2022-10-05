@@ -32,6 +32,10 @@ module.exports = {
       route: '/publication/like',
       method: 'post',
     },
+    {
+      route: '/publication/comment',
+      method: 'get',
+    },
   ],
   regular: [
     {
@@ -54,6 +58,10 @@ module.exports = {
       route: '/publication/like',
       method: 'post',
     },
+    {
+      route: '/publication/comment',
+      method: 'get',
+    },
   ],
 
   anonymous: [
@@ -64,6 +72,10 @@ module.exports = {
     {
       route: '/login',
       method: 'post',
+    },
+        {
+      route: '/publication/comment',
+      method: 'get',
     },
   ],
 };
