@@ -14,7 +14,7 @@ module.exports = async () => {
     await User.create({
       name: 'Administrador',
       email: 'admin@gmail.com',
-      password: bcryptjs.hashSync('admin', 3),
+      password: bcryptjs.hashSync('admin123', 3),
       type: 'admin',
     });
 };
