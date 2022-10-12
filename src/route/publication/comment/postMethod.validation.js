@@ -13,14 +13,19 @@ module.exports = (parameters, context) => {
     type: 'object',
     properties: {
       publicationId:{
-        type:'integer',
+        type: 'integer',
         minimum: 1
       },
       comment:{
         type: 'string'
-      }
+      },
+      rate: {
+        type: 'integer',
+        minimum: 1,
+        maximum: 10,
+      },
     },
-    required: ['publicationId', 'comment'],
+    required: ['publicationId', 'comment', 'rate'],
     additionalProperties: false,
     errorMessage: language.validation,
   };

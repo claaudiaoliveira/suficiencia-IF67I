@@ -14,6 +14,9 @@ const Comment = database.define('comments', {
     type: Sequelize.TEXT,
     allowNull: false,
   },
+  rate: {
+    type: Sequelize.INTEGER,
+  },
 });
 
 Comment.belongsTo(Publication, {
@@ -34,5 +37,5 @@ User.hasMany(Comment, {
   foreignKey: 'userId',
 });
 
-
+Comment.sync({ alter: true });
 module.exports = Comment;

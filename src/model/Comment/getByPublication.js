@@ -7,7 +7,7 @@ module.exports = async (parameters) => {
     where: {
       publicationId: parameters.publicationId,
     },
-    attributes: ['id', 'comment'],
+    attributes: ['id', 'comment', 'rate'],
     include: [
       { model: User, attributes: ['id', 'name', 'email', 'type'] },
       {
