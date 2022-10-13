@@ -12,32 +12,29 @@ module.exports = async (parameters, context) => {
   });
 
   async function calculateAverage() {
-    const publications = await PublicationTable.findAll();
+    let sumRate = 0.0;
+    let throwbackRate;
+
+    const comments = await Comment.findAll({
+      where: { publicationId: parameters.publicationId },
+    });
+
     await Promise.all(
-      publications.map(async (publication) => {
-        let sumRate = 0.0;
-        let throwbackRate;
-
-        const comments = await Comment.findAll();
-
-        await Promise.all(
-          comments.map(async (comment) => {
-            sumRate += comment.rate;
-          })
-        );
-
-        let avgRate = sumRate / comments.length;
-
-        if (comments.length == 0) {
-          throwbackRate = 0;
-        } else {
-          throwbackRate = Math.round(avgRate * 2) / 2;
-        }
-        PublicationTable.update(
-          { avgRate: throwbackRate },
-          { where: { id: publication.id } }
-        );
+      comments.map(async (comment) => {
+        sumRate += comment.rate;
       })
+    );
+
+    let avgRate = sumRate / comments.length;
+
+    if (comments.length == 0) {
+      throwbackRate = 0;
+    } else {
+      throwbackRate = Math.round(avgRate * 2) / 2;
+    }
+    PublicationTable.update(
+      { avgRate: throwbackRate },
+      { where: { id: parameters.publicationId } }
     );
   }
 
