@@ -27,6 +27,7 @@ module.exports = async (parameters) => {
           'ingredients',
           'photo',
           'price',
+          'avgRate'
         ],
       },
     ],

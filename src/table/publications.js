@@ -29,6 +29,9 @@ const Publication = database.define('publications', {
     type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
   },
+  avgRate: {
+    type: Sequelize.FLOAT,
+  },
   // userId: {
   //   type: Sequelize.INTEGER,
   //   allowNull: false,
@@ -43,8 +46,7 @@ const Publication = database.define('publications', {
 
 Publication.belongsTo(User, {
   constraint: true,
-  foreignKey: 'userId'
-})
-
+  foreignKey: 'userId',
+});
 
 module.exports = Publication;

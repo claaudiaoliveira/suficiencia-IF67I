@@ -1,5 +1,6 @@
 const translation = require('./persist.translation');
-const Table = require('../../table/comments');
+const Comment = require('../../table/comments');
+const PublicationTable = require('../../table/publications');
 const createCustomError = require('../../util/createCustomError');
 const Publication = require('../Publication');
 const get = require('./get');
@@ -10,12 +11,45 @@ module.exports = async (parameters, context) => {
     id: parameters.publicationId,
   });
 
+  async function calculateAverage() {
+    const publications = await PublicationTable.findAll();
+    await Promise.all(
+      publications.map(async (publication) => {
+        let sumRate = 0.0;
+        let throwbackRate;
+
+        const comments = await Comment.findAll();
+
+        await Promise.all(
+          comments.map(async (comment) => {
+            sumRate += comment.rate;
+          })
+        );
+
+        let avgRate = sumRate / comments.length;
+
+        if (comments.length == 0) {
+          throwbackRate = 0;
+        } else {
+          throwbackRate = Math.round(avgRate * 2) / 2;
+        }
+        PublicationTable.update(
+          { avgRate: throwbackRate },
+          { where: { id: publication.id } }
+        );
+      })
+    );
+  }
+
   if (!publicationVerification.isAvailable)
     throw createCustomError(400, { message: language.error1 });
 
-  const result = await Table.create(parameters);
+  const result = await Comment.create(parameters);
 
-  const comment = await get({ id: result.dataValues.id });
+  const comment = await get({ id: result.dataValues.id }).then((comment) => {
+    calculateAverage();
+    return comment;
+  });
 
   return comment;
 };
