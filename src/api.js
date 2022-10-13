@@ -19,5 +19,7 @@ api.get('/publication', preRequest(require('./route/publication/getMethod')));
 api.post('/publication/comment', preRequest(require('./route/publication/comment/postMethod')));
 api.get('/publication/comment', preRequest(require('./route/publication/comment/getMethod')));
 api.post('/publication/like', preRequest(require('./route/publication/like/postMethod')));
+api.get('/publication/rate', preRequest(require('./route/publication/rate/getMethod')));
+api.get('/comments/all', preRequest(require('./route/comment/getMethod')));
 
 module.exports = api;

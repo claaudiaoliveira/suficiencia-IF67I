@@ -4,6 +4,7 @@ const getAll = require('./getAll');
 const getByIngredientsAndPrice = require('./getByIngredientsAndPrice');
 const getByIngredients = require('./getByIngredients');
 const getByPrice = require('./getByPrice');
+const getByRate = require('./getByRate');
 const verify = require('./verify');
 
 module.exports = {
@@ -13,5 +14,6 @@ module.exports = {
   getByIngredientsAndPrice,
   getByIngredients,
   getByPrice,
+  getByRate,
   verify
 }

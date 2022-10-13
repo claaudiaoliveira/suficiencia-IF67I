@@ -36,6 +36,14 @@ module.exports = {
       route: '/publication/comment',
       method: 'get',
     },
+    {
+      route: '/publication/rate',
+      method: 'get',
+    },
+    {
+      route: '/comments/all',
+      method: 'get',
+    },
   ],
   regular: [
     {
@@ -62,6 +70,14 @@ module.exports = {
       route: '/publication/comment',
       method: 'get',
     },
+    {
+      route: '/publication/rate',
+      method: 'get',
+    },
+    {
+      route: '/comments/all',
+      method: 'get',
+    },
   ],
 
   anonymous: [
@@ -73,8 +89,16 @@ module.exports = {
       route: '/login',
       method: 'post',
     },
-        {
+    {
       route: '/publication/comment',
+      method: 'get',
+    },
+    {
+      route: '/publication/rate',
+      method: 'get',
+    },
+    {
+      route: '/comments/all',
       method: 'get',
     },
   ],

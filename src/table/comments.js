@@ -37,5 +37,4 @@ User.hasMany(Comment, {
   foreignKey: 'userId',
 });
 
-Comment.sync({ alter: true });
 module.exports = Comment;
